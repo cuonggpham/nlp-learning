@@ -70,7 +70,7 @@ class TrigramModel:
         plt.show()
 
 # Văn bản huấn luyện mẫu
-with open("textdata.txt", "r") as file:
+with open("C:\\Users\\Admin\\OneDrive - Hanoi University of Science and Technology\\Documents\\Code\\train-nlp\\Week2\\textdata.txt", "r") as file:
     text_corpus = file.read()
 
 # Khởi tạo và huấn luyện mô hình
