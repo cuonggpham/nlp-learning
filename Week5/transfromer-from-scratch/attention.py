@@ -23,8 +23,12 @@ class MultiHeadAttention(nn.Module):
         self.value = nn.Linear(self.head, self.head, bias=False)  # the Value metrix
         self.key = nn.Linear(self.head, self.head, bias=False)  # the Key metrix
 
+<<<<<<< HEAD
         # fully connected layer: 8*64x512 or 512x512 
         # lop Linear 
+=======
+        # fully connected layer: 8*64x512 or 512x512
+>>>>>>> 5952ff2ff999616bdb960be3cff142a54d631a52
         self.fc_out = nn.Linear(self.head * self.heads, embed_dim)
 
     def forward(self, key, query, value, mask=None):
