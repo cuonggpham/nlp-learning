@@ -35,13 +35,14 @@ class TrigramModel:
         # """Dự đoán từ tiếp theo có xác suất cao nhất dựa trên hai từ trước."""
         bigram = (word1, word2)
         
-        if bigram not in self.trigram_counts:
-            return None  # Không có dữ liệu cho bigram này
-        
-        # Tính xác suất cho mỗi từ tiếp theo
+        if bigram not in self.bigram_totals:
+            print("Bigram chưa từng thấy. Dự đoán ngẫu nhiên có smoothing.")
+            return np.random.choice(list(self.vocab))
+
+        # Laplace smoothing
         word_probs = {
-            word: count / self.bigram_totals[bigram]
-            for word, count in self.trigram_counts[bigram].items()
+            word: (self.trigram_counts[bigram][word] + 1) / (self.bigram_totals[bigram] + V)
+            for word in self.vocab
         }
         
         return max(word_probs, key=word_probs.get)  # Từ có xác suất cao nhất
